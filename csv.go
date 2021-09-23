@@ -6,7 +6,7 @@ import (
 )
 
 func Append(path string, data []string) (err error) {
-	f, err := os.Open(path, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+	f, err := os.Open(path)
 	if err != nil {
 		return
 	}
