@@ -5,6 +5,8 @@ import (
 	"os"
 )
 
+type CSV struct{}
+
 func Append(path string, data []string) (err error) {
 	f, err := os.Open(path)
 	if err != nil {
