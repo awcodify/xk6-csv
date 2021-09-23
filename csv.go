@@ -2,6 +2,7 @@ package csv
 
 import (
 	"encoding/csv"
+	"log"
 	"os"
 
 	"go.k6.io/k6/js/modules"
@@ -13,10 +14,10 @@ func init() {
 	modules.Register("k6/x/csv", new(CSV))
 }
 
-func (c *CSV) Append(path string, data []string) (err error) {
+func (c *CSV) Append(path string, data []string) {
 	f, err := os.Open(path)
 	if err != nil {
-		return
+		log.Fatal(err)
 	}
 	defer f.Close()
 
@@ -24,8 +25,6 @@ func (c *CSV) Append(path string, data []string) (err error) {
 	w.Write(data)
 
 	if err = w.Error(); err != nil {
-		return
+		log.Fatal(err)
 	}
-
-	return
 }
