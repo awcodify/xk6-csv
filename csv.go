@@ -27,4 +27,6 @@ func (c *CSV) Append(path string, data []string) {
 	if err = w.Error(); err != nil {
 		log.Fatal(err)
 	}
+
+	w.Flush()
 }
