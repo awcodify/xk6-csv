@@ -10,10 +10,10 @@ import (
 type CSV struct{}
 
 func init() {
-	modules.Register("k6/x/redis", new(CSV))
+	modules.Register("k6/x/csv", new(CSV))
 }
 
-func Append(path string, data []string) (err error) {
+func (c *CSV) Append(path string, data []string) (err error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return
