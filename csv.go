@@ -1,4 +1,4 @@
-package csv
+package main
 
 import (
 	"encoding/csv"
@@ -15,7 +15,7 @@ func init() {
 }
 
 func (c *CSV) Append(path string, data []string) {
-	f, err := os.Open(path)
+	f, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if err != nil {
 		log.Fatal(err)
 	}
