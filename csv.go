@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func Append(path string, data [][]string) error {
+func Append(path string, data []string) (err error) {
 	f, err := os.Open(path, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 	if err != nil {
 		return
@@ -15,7 +15,7 @@ func Append(path string, data [][]string) error {
 	w := csv.NewWriter(f)
 	w.Write(data)
 
-	if err := w.Error(); err != nil {
+	if err = w.Error(); err != nil {
 		return
 	}
 
