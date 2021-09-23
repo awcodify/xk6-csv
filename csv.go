@@ -3,9 +3,15 @@ package csv
 import (
 	"encoding/csv"
 	"os"
+
+	"go.k6.io/k6/js/modules"
 )
 
 type CSV struct{}
+
+func init() {
+	modules.Register("k6/x/redis", new(CSV))
+}
 
 func Append(path string, data []string) (err error) {
 	f, err := os.Open(path)
